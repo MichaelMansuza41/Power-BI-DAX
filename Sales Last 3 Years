@@ -1,0 +1,9 @@
+Sales Last 3 Years = 
+VAR Last_Date = CALCULATE(MAX(Fact_Sales[Period]), ALL(Fact_Sales))
+VAR ThreeYearsAgo = EDATE(Last_Date, -36)
+
+RETURN
+CALCULATE(
+    COUNTROWS(Fact_Sales),
+    Fact_Sales[Period] >= ThreeYearsAgo && Fact_Sales[Period] <= Last_Date
+)
