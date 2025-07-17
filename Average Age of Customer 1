@@ -1,0 +1,10 @@
+AVG Customer Sales by Model = 
+AVERAGEX(
+    SUMMARIZE(
+        Fact_Sales,
+        Dim_Cars[Car Model],
+        Dim_Customers[CustomerID],
+        "CustomerAge", FIRSTNONBLANK(Dim_Customers[Age], 0)
+    ),
+    [CustomerAge]
+)
