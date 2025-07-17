@@ -1,14 +1,14 @@
-DateTable = 
-ADDCOLUMNS (
-    CALENDAR (
-        MIN ( Fact_Prices[update date] ),
-        MAX ( Fact_Prices[update date] )
-    ),
-    "Year", YEAR([Date]),
-    "Month", MONTH([Date]),
-    "Month Name", FORMAT([Date], "MMMM"),
-    "Quarter", "Q" & QUARTER([Date]),
-    "Day", DAY([Date]),
-    "Weekday", FORMAT([Date], "dddd"),
-    "Is Weekend", IF(WEEKDAY([Date],2)>5, TRUE, FALSE)
-)
+Dim_Date = 
+ADDCOLUMNS(
+        CALENDAR(
+            MIN(Fact_Sales[Period]),
+            MAX(Fact_Sales[Period])),
+        "Weekday Name", FORMAT([Date], "dddd"),
+        "Day", DAY([Date]),
+        "Weekday", WEEKDAY([Date]),
+        "Month", MONTH([Date]),
+        "Year", YEAR([Date]),
+        "Month Name", FORMAT([Date], "MMMM"),
+        "YearQuarter", FORMAT([Date], "YYYY [Q]Q"),
+        //"Quarter","Q" & QUARTER([Date]),//
+        "Is Weekend", IF(WEEKDAY([Date])>5, TRUE, FALSE))
