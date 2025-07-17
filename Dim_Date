@@ -1,0 +1,14 @@
+DateTable = 
+ADDCOLUMNS (
+    CALENDAR (
+        MIN ( Fact_Prices[update date] ),
+        MAX ( Fact_Prices[update date] )
+    ),
+    "Year", YEAR([Date]),
+    "Month", MONTH([Date]),
+    "Month Name", FORMAT([Date], "MMMM"),
+    "Quarter", "Q" & QUARTER([Date]),
+    "Day", DAY([Date]),
+    "Weekday", FORMAT([Date], "dddd"),
+    "Is Weekend", IF(WEEKDAY([Date],2)>5, TRUE, FALSE)
+)
