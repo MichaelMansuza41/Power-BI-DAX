@@ -1,0 +1,14 @@
+Repeated Sales by Model = 
+        FILTER(
+                SUMMARIZE(
+                    Fact_Sales,
+                    Dim_Customers[CustomerID],
+                    Dim_Cars[Car Model],
+                    "#Acquisitions", CALCULATE(COUNT(Fact_Sales[CarID])),
+               	    "FirstDate", CALCULATE(MIN(Fact_Sales[Period])),
+                    "LastDate", CALCULATE(MAX(Fact_Sales[Period]))
+                ),
+            [#Acquisitions] > 1
+        )
+
+// Табличное выражение показывает какой продукт был куплен более одного раза, сколько ращ и кем + в каких числах
