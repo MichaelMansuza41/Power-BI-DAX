@@ -1,0 +1,3 @@
+1. Создаём таблицу TOPN: Modeling - New Parameters - Numeric Range // Создаётся SLICER
+2. Пишем функцию RANKX: Rank Models = RANKX(ALL(Dim_Cars[Car Model]), [Sales Last 3 Years], , DESC) // На этом примере продажи от за последние 3 года
+3. Top N Sales by Models = IF([Rank Models] <= [Top N Models Value], [Sales Last 3 Years]) 
