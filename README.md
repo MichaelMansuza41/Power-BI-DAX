@@ -1,2 +1,2 @@
-# Power-BI-DAX
+# Power-BI
 DAX Codes
